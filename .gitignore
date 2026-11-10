@@ -1,0 +1,10 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+*.lnk
+.vscode/
+.idea/
+
+# Local loose raw files in root (already copied to assets/)
+/amenn.png
+/CV_Amenallah_Robbana.pdf

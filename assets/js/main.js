@@ -34,6 +34,21 @@
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   if (year) year.textContent = new Date().getFullYear();
 
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+      projectCards.forEach(card => {
+        const cat = card.getAttribute('data-category') || '';
+        const match = filter === 'all' || cat.split(' ').includes(filter);
+        card.classList.toggle('filter-hidden', !match);
+      });
+    });
+  });
+
   if (glow && window.matchMedia('(pointer:fine)').matches) {
     window.addEventListener('pointermove', e => {
       glow.style.left = `${e.clientX}px`;
